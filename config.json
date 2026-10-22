@@ -1,0 +1,72 @@
+{
+  "eventType": "Ring Ceremony & Engagement",
+  "eventTypeHindi": "शुभ सगाई एवं मुद्रिका अर्पण",
+  "invitationTagline": "WITH THE BLESSINGS OF OUR ELDERS",
+  "ceremonySubHindi": "अंगूठी रस्म एवं मांगलिक आमंत्रण",
+  "ceremonySubEn": "THE ROYAL RING CEREMONY & ENGAGEMENT",
+  "coverShloka": "दो दिलों का यह पवित्र बंधन, प्रेम और विश्वास की अमर कहानी बने",
+  "bride": "Akansha",
+  "groom": "Nilesh",
+  "brideParents": "Smt. Maya & Late Shri Rajesh Vishwakarma",
+  "groomParents": "Smt. Kushlata & Shri Mansukhlal Vishwakarma",
+  "ceremonyDateTime": "2026-11-11T12:00:00",
+  "displayDate": "Wednesday, 11 November 2026",
+  "displayTime": "12:00 PM Onwards",
+  "shubhMuhurat": "12:15 PM (शुभ मुहूर्त)",
+  "blessing": "॥ श्री गणेशाय नमः ॥",
+  "sacredShloka": "वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥",
+  "invokingTextEnglish": "By the grace of God and with the eternal blessings of our revered ancestors & beloved parents,",
+  "invokingTextHindi": "हम अत्यंत हर्ष और स्नेहपूर्वक आपको हमारे परिवार के शुभ आयोजन में सादर आमंत्रित करते हैं।",
+  "ringsQuoteHindi": "अंगूठी का यह गोलाकार घेरा, अनंत प्रेम और अटूट विश्वास का प्रतीक है,\nजिसका न कोई आदि है और न कोई अंत।",
+  "ringsQuoteEnglish": "As these rings are exchanged, two promises become one sacred journey of a lifetime.",
+  "venueName": "Hotel Raj Palace",
+  "venueAddress": " Krishi Upaj Mandi Road, Paharua, Katni, Madhya Pradesh 483501 (near Sai Mandir)",
+  "mapSearch": "Hotel Raj Palace, Katni",
+  "familyLine": "Vishwakarma Family",
+  "rsvpInfo": "R.S.V.P: +91 6265386842 / +91 9425465045",
+  "closingSubHindi": "आपकी गरिमामयी उपस्थिति हमारे इस मांगलिक उत्सव की शोभा बढ़ाएगी।",
+  "closingCopy": "Your gracious presence and heartfelt blessings will make this sacred milestone truly memorable.",
+  "events": [
+    {
+      "symbol": "🌺",
+      "title": "Oli Ceremony",
+      "hindi": "शुभ ओली रस्म (मांगलिक शगुन)",
+      "date": "Wednesday, 11 November 2026",
+      "time": "12:00 PM",
+      "venue": "Hotel Raj Palace"
+    },
+    {
+      "symbol": "🪔",
+      "title": "Variksha Ceremony",
+      "hindi": "वरीक्षा रस्म (तिलक एवं रोली-अक्षत)",
+      "date": "Wednesday, 11 November 2026",
+      "time": "01:30 PM",
+      "venue": "Hotel Raj Palace"
+    },
+    {
+      "symbol": "💍",
+      "title": "Sagai & Ring Exchange",
+      "hindi": "शुभ सगाई एवं मुद्रिका अर्पण",
+      "date": "Wednesday, 11 November 2026",
+      "time": "03:00 PM (शुभ मुहूर्त)",
+      "venue": "Hotel Raj Palace"
+    }
+  ],
+  "defaultBlessings": [
+    {
+      "name": "shri Sharad & Laxmi Vishwakarma",
+      "city": "Katni",
+      "message": "May your journey together be adorned with endless affection, laughter, and lifelong understanding! Sada khush raho!"
+    },
+    {
+      "name": "Sujal Vishwakarma",
+      "city": "Katni",
+      "message": "Heartiest congratulations to Akansha & Nilesh on your auspicious ring ceremony. Two wonderful families unite today!"
+    },
+    {
+      "name": "Rudra Vishwakarma",
+      "city": "Katni",
+      "message": "What a stunning couple! May God shower his choicest blessings upon you both as you exchange these sacred rings. 💍✨"
+    }
+  ]
+}
