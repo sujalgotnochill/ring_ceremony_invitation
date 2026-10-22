@@ -31,6 +31,7 @@
   /* Typography */
   --font-royal: "Cinzel", Georgia, serif;
   --font-decorative: "Cinzel Decorative", Georgia, serif;
+  --font-couple: "Cinzel Decorative", "Cinzel", Georgia, serif;
   --font-cursive: "Great Vibes", cursive;
   --font-marcellus: "Marcellus", serif;
   --font-hindi: "Noto Serif Devanagari", serif;
@@ -567,12 +568,13 @@ main, footer {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  font-family: var(--font-cursive);
-  font-size: clamp(38px, 9vw, 54px);
+  font-family: var(--font-couple);
+  font-size: clamp(30px, 6.5vw, 42px);
   color: var(--gold-highlight);
-  font-weight: 400;
-  line-height: 1;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 22px rgba(245, 207, 109, 0.45);
 }
 
 .cover-knot {
@@ -764,26 +766,32 @@ main, footer {
 }
 
 .crest-shield {
-  width: 95px;
-  height: 95px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  border: 2px solid var(--gold-primary);
-  outline: 1px dashed rgba(245, 207, 109, 0.5);
+  border: 2.5px solid var(--gold-primary);
+  outline: 1.5px dashed rgba(245, 207, 109, 0.6);
   outline-offset: 6px;
-  background: radial-gradient(circle, #570914 0%, #290309 80%);
+  background: radial-gradient(circle, #680d1b 0%, #290309 85%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), var(--gold-glow);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), var(--gold-glow);
   margin: 0 auto;
 }
 
 .monogram {
-  font-family: var(--font-royal);
-  font-size: 18px;
+  font-family: var(--font-decorative), var(--font-royal);
+  font-size: 28px;
   font-weight: 700;
-  color: var(--gold-light);
-  letter-spacing: 0.12em;
+  color: var(--gold-highlight);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 20px rgba(245, 207, 109, 0.6);
 }
 
 .grand-heading {
@@ -833,41 +841,54 @@ main, footer {
 }
 
 .avatar-emblem {
-  width: 76px;
-  height: 76px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
-  margin: 0 auto 18px;
-  border: 2px solid var(--gold-primary);
-  background: radial-gradient(circle, #630c18 0%, #200206 100%);
+  margin: 0 auto 16px;
+  border: 2.5px solid var(--gold-primary);
+  outline: 1px dashed rgba(245, 207, 109, 0.55);
+  outline-offset: 5px;
+  background: radial-gradient(circle, #730e1d 0%, #200206 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 20px rgba(226, 183, 85, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.avatar-emblem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 28px rgba(245, 207, 109, 0.55);
 }
 
 .avatar-ring-icon {
   position: absolute;
-  top: -8px;
+  top: -10px;
   color: var(--gold-light);
-  font-size: 14px;
+  font-size: 16px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }
 
 .avatar-initial {
-  font-family: var(--font-royal);
-  font-size: 32px;
+  font-family: var(--font-decorative), var(--font-royal);
+  font-size: 52px;
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--gold-highlight);
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 25px rgba(245, 207, 109, 0.65);
 }
 
 .person-name {
-  font-family: var(--font-cursive);
-  font-size: clamp(42px, 8vw, 56px);
+  font-family: var(--font-couple);
+  font-size: clamp(28px, 5.2vw, 38px);
   color: var(--gold-highlight);
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 8px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 207, 109, 0.45);
 }
 
 .relation-role {
@@ -1050,9 +1071,12 @@ main, footer {
 
 .ring-tag {
   margin-top: 10px;
-  font-family: var(--font-cursive);
-  font-size: 22px;
+  font-family: var(--font-couple);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--gold-light);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* Initial Ring Positions */

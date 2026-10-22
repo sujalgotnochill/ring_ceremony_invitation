@@ -11,45 +11,45 @@
 */
 const CONFIG = {
   eventType: "Ring Ceremony & Engagement",
-  eventTypeHindi: "शुभ सगाई एवं मुद्रिका अर्पण",
+  eventTypeHindi: "शुभ सगाई समारोह",
   bride: "Akansha",
   groom: "Nilesh",
-  brideParents: "Smt. Maya & Late Shri Rajesh Vishwakarma",
-  groomParents: "Smt. Kushlata & Shri Mansukhlal Vishwakarma",
+  brideParents: "Smt. Maya & Late Shri Rajesh Vishwakarma ji",
+  groomParents: "Smt. Khushlata & Shri Mansukhlal Vishwakarma ji",
   ceremonyDateTime: "2026-11-11T12:00:00",
   displayDate: "Wednesday, 11 November 2026",
   displayTime: "12:00 PM Onwards",
   shubhMuhurat: "12:15 PM (शुभ मुहूर्त)",
   blessing: "॥ श्री गणेशाय नमः ॥",
-  venueName: "The Grand Royal Palace & Resort",
-  venueAddress: "Palace Road, Near Rajwada Garden\nUdaipur, Rajasthan - 313001",
-  mapSearch: "The Grand Royal Palace Udaipur Rajasthan",
+  venueName: "Hotel Raj Palace",
+  venueAddress: " Krishi Upaj Mandi Road, Paharua, Katni, Madhya Pradesh 483501 (near Sai Mandir)",
+  mapSearch: "Hotel Raj Palace, Katni",
   familyLine: "Vishwakarma Family",
-  rsvpInfo: "R.S.V.P: +91 98765 43210 / +91 91234 56789",
+  rsvpInfo: "R.S.V.P: +91 6265386842 / +91 9425465045",
   events: [
     {
-      symbol: "🌺",
-      title: "Oli Ceremony",
-      hindi: "शुभ ओली रस्म (मांगलिक शगुन)",
+      symbol: "🪔",
+      title: "Oli and Variksha Ceremony",
+      hindi: "शुभ ओली एवं वरीक्षा रस्म ",
       date: "Wednesday, 11 November 2026",
       time: "12:00 PM",
-      venue: "Family Residence / Darbar Hall"
-    },
-    {
-      symbol: "🪔",
-      title: "Variksha Ceremony",
-      hindi: "वरीक्षा रस्म (तिलक एवं रोली-अक्षत)",
-      date: "Wednesday, 11 November 2026",
-      time: "01:30 PM",
-      venue: "The Royal Palace Banquet Lawn"
+      venue: "Hotel Raj Palace"
     },
     {
       symbol: "💍",
-      title: "Sagai & Ring Exchange",
-      hindi: "शुभ सगाई एवं मुद्रिका अर्पण",
+      title: "Ring Ceremony",
+      hindi: "शुभ सगाई समारोह",
       date: "Wednesday, 11 November 2026",
-      time: "03:00 PM (शुभ मुहूर्त)",
-      venue: "Central Royal Mandap & Feast Courtyard"
+      time: "01:00 PM",
+      venue: "Hotel Raj Palace"
+    },
+    {
+      symbol: "🌺",
+      title: "Lunch",
+      hindi: "भोजन",
+      date: "Wednesday, 11 November 2026",
+      time: "02:00 PM",
+      venue: "Hotel Raj Palace"
     }
   ]
 };
@@ -57,18 +57,18 @@ const CONFIG = {
 // Default initial blessings
 const DEFAULT_BLESSINGS = [
   {
-    name: "Dr. Ashok & Meena Sharma",
-    city: "Jaipur",
+    name: "Shri Sharad & Laxmi Vishwakarma",
+    city: "Katni",
     message: "May your journey together be adorned with endless affection, laughter, and lifelong understanding! Sada khush raho!"
   },
   {
-    name: "Rajendra & Sunita Verma",
-    city: "New Delhi",
+    name: "Sujal Vishwakarma",
+    city: "Katni",
     message: "Heartiest congratulations to Akansha & Nilesh on your auspicious ring ceremony. Two wonderful families unite today!"
   },
   {
-    name: "Vikram & Pooja Malhotra",
-    city: "Udaipur",
+    name: "Rudra Vishwakarma",
+    city: "Katni",
     message: "What a stunning couple! May God shower his choicest blessings upon you both as you exchange these sacred rings. 💍✨"
   }
 ];
@@ -120,6 +120,7 @@ function renderConfig() {
 
   // Cover Page
   setText("coverBlessing", CONFIG.blessing);
+  setText("coverEventTypeHindi", CONFIG.eventTypeHindi);
   setText("coverBride", CONFIG.bride);
   setText("coverGroom", CONFIG.groom);
   setText("coverDate", CONFIG.displayDate);
@@ -130,10 +131,13 @@ function renderConfig() {
   setText("sacredShloka", CONFIG.sacredShloka);
   setText("invokingTextEn", CONFIG.invokingTextEnglish);
   setText("invokingTextHi", CONFIG.invokingTextHindi);
+  setText("grandHeading", CONFIG.eventTypeHindi);
 
-  setText("crestMonogram", `${CONFIG.bride.charAt(0)} 💍 ${CONFIG.groom.charAt(0)}`);
-  setText("brideInitial", CONFIG.bride.charAt(0));
-  setText("groomInitial", CONFIG.groom.charAt(0));
+  const bInit = (CONFIG.bride ? CONFIG.bride.charAt(0) : "A").toUpperCase();
+  const gInit = (CONFIG.groom ? CONFIG.groom.charAt(0) : "N").toUpperCase();
+  setText("crestMonogram", `${bInit} 💍 ${gInit}`);
+  setText("brideInitial", bInit);
+  setText("groomInitial", gInit);
   setText("heroBride", CONFIG.bride);
   setText("heroGroom", CONFIG.groom);
   setText("brideParents", CONFIG.brideParents);
