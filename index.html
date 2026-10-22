@@ -1,19 +1,23 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta name="theme-color" content="#3a050c">
   <meta name="description" content="Royal Indian Ring Ceremony & Engagement Invitation">
   <title>Ring Ceremony Invitation | Akansha &amp; Nilesh</title>
-  
+
   <!-- Google Fonts for Royal Indian Aesthetics -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Rozha+One&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Background Petal & Sparkle Canvas -->
   <canvas id="petalCanvas" class="petal-canvas" aria-hidden="true"></canvas>
@@ -25,12 +29,13 @@
 
   <!-- Floating Audio Controller with Royal Equalizer -->
   <div class="floating-audio-panel">
-    <button class="music-toggle" id="musicToggle" type="button" aria-label="Toggle background music" aria-pressed="false">
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Toggle background music"
+      aria-pressed="false">
       <span class="music-disc-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" class="svg-icon">
-          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
-          <circle cx="12" cy="12" r="3" fill="currentColor"/>
-          <path d="M12 2a10 10 0 0 1 10 10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <circle cx="12" cy="12" r="3" fill="currentColor" />
+          <path d="M12 2a10 10 0 0 1 10 10" fill="none" stroke="currentColor" stroke-width="1.8" />
         </svg>
       </span>
       <div class="equalizer-bars" aria-hidden="true">
@@ -50,7 +55,8 @@
       <span class="fab-icon">🌸</span>
       <span class="fab-tooltip">पुष्प वर्षा</span>
     </button>
-    <a class="fab-btn share-fab" id="whatsappShareBtn" href="#" target="_blank" rel="noopener noreferrer" title="Share Invitation on WhatsApp">
+    <a class="fab-btn share-fab" id="whatsappShareBtn" href="#" target="_blank" rel="noopener noreferrer"
+      title="Share Invitation on WhatsApp">
       <span class="fab-icon">💬</span>
       <span class="fab-tooltip">Share</span>
     </a>
@@ -61,7 +67,8 @@
 
   <!-- Floating Scroll Down Prompt Button (Appears on opening invitation) -->
   <div class="floating-scroll-prompt" id="floatingScrollPrompt" hidden>
-    <button class="floating-scroll-btn" id="floatingScrollBtn" type="button" aria-label="Scroll down to Shree Ganeshaya Namah">
+    <button class="floating-scroll-btn" id="floatingScrollBtn" type="button"
+      aria-label="Scroll down to Shree Ganeshaya Namah">
       <div class="scroll-btn-content">
         <span class="scroll-btn-hindi hindi">नीचे स्क्रॉल करें</span>
         <span class="scroll-btn-en">SCROLL DOWN TO EXPLORE</span>
@@ -78,18 +85,20 @@
     <!-- ============================================== -->
     <section class="cover" id="cover" aria-label="Royal Invitation Envelope">
       <div class="envelope-scene">
-        
+
         <!-- Toran / Traditional Marigold Garland Decoration at Top -->
         <div class="royal-toran" aria-hidden="true">
           <svg viewBox="0 0 1200 80" preserveAspectRatio="none" class="toran-svg">
-            <path d="M0,0 Q150,60 300,0 Q450,60 600,0 Q750,60 900,0 Q1050,60 1200,0" fill="none" stroke="#e8ba51" stroke-width="3"/>
-            <path d="M0,0 Q150,75 300,0 Q450,75 600,0 Q750,75 900,0 Q1050,75 1200,0" fill="none" stroke="#d4af37" stroke-dasharray="8 8" stroke-width="2"/>
+            <path d="M0,0 Q150,60 300,0 Q450,60 600,0 Q750,60 900,0 Q1050,60 1200,0" fill="none" stroke="#e8ba51"
+              stroke-width="3" />
+            <path d="M0,0 Q150,75 300,0 Q450,75 600,0 Q750,75 900,0 Q1050,75 1200,0" fill="none" stroke="#d4af37"
+              stroke-dasharray="8 8" stroke-width="2" />
             <!-- Hanging bells and marigolds -->
             <g fill="#f5cf6d">
-              <circle cx="150" cy="55" r="7"/>
-              <circle cx="450" cy="55" r="7"/>
-              <circle cx="750" cy="55" r="7"/>
-              <circle cx="1050" cy="55" r="7"/>
+              <circle cx="150" cy="55" r="7" />
+              <circle cx="450" cy="55" r="7" />
+              <circle cx="750" cy="55" r="7" />
+              <circle cx="1050" cy="55" r="7" />
             </g>
           </svg>
         </div>
@@ -107,22 +116,25 @@
             <div class="ganesh-svg-container" aria-label="Shree Ganesha">
               <!-- Handcrafted Elegant Golden Ganesha SVG -->
               <svg viewBox="0 0 100 100" class="ganesh-svg">
-                <path d="M50 8 C40 8 32 15 32 25 C32 35 40 40 45 44 C42 45 35 48 30 54 C24 61 24 72 32 80 C38 86 48 88 56 86 C64 84 72 78 74 68 C76 58 72 52 66 48 C72 44 76 38 74 30 C72 20 62 14 55 12 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                <path
+                  d="M50 8 C40 8 32 15 32 25 C32 35 40 40 45 44 C42 45 35 48 30 54 C24 61 24 72 32 80 C38 86 48 88 56 86 C64 84 72 78 74 68 C76 58 72 52 66 48 C72 44 76 38 74 30 C72 20 62 14 55 12 Z"
+                  fill="none" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
                 <!-- Trunk swirl -->
-                <path d="M52 38 Q58 48 56 62 Q54 74 44 76 Q38 78 36 72 Q35 66 42 63 Q48 61 48 54" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M52 38 Q58 48 56 62 Q54 74 44 76 Q38 78 36 72 Q35 66 42 63 Q48 61 48 54" fill="none"
+                  stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
                 <!-- Crown / Mukut -->
-                <path d="M43 14 L50 4 L57 14 Z" fill="url(#goldGradient)"/>
+                <path d="M43 14 L50 4 L57 14 Z" fill="url(#goldGradient)" />
                 <!-- Sacred Modak -->
-                <circle cx="68" cy="62" r="4.5" fill="url(#goldGradient)"/>
+                <circle cx="68" cy="62" r="4.5" fill="url(#goldGradient)" />
                 <!-- Tilak -->
-                <path d="M49 19 Q50 25 51 19 Z" fill="#c32222"/>
-                <circle cx="50" cy="18" r="2" fill="#f8d675"/>
+                <path d="M49 19 Q50 25 51 19 Z" fill="#c32222" />
+                <circle cx="50" cy="18" r="2" fill="#f8d675" />
                 <!-- Radial Gold Gradient Definition -->
                 <defs>
                   <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#fff0be"/>
-                    <stop offset="50%" stop-color="#dfb54e"/>
-                    <stop offset="100%" stop-color="#9d741c"/>
+                    <stop offset="0%" stop-color="#fff0be" />
+                    <stop offset="50%" stop-color="#dfb54e" />
+                    <stop offset="100%" stop-color="#9d741c" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -159,8 +171,8 @@
               <span class="bride-name" id="coverBride">Akansha</span>
               <span class="cover-knot">
                 <svg viewBox="0 0 40 25" class="knot-svg">
-                  <path d="M5,12 C15,0 25,24 35,12" fill="none" stroke="currentColor" stroke-width="2.5"/>
-                  <circle cx="20" cy="12" r="3.5" fill="currentColor"/>
+                  <path d="M5,12 C15,0 25,24 35,12" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <circle cx="20" cy="12" r="3.5" fill="currentColor" />
                 </svg>
                 <i>&amp;</i>
               </span>
@@ -181,7 +193,8 @@
               <span class="btn-sub">OPEN ROYAL INVITATION</span>
               <span class="btn-arrow" aria-hidden="true">↓</span>
             </button>
-            <p class="cover-scroll-hint hindi" aria-hidden="true">आमंत्रण खोलें एवं संपूर्ण मांगलिक कार्यक्रम देखें ↓</p>
+            <p class="cover-scroll-hint hindi" aria-hidden="true">आमंत्रण खोलें एवं संपूर्ण मांगलिक कार्यक्रम देखें ↓
+            </p>
           </div>
 
           <p class="cover-shloka hindi" id="coverShloka">
@@ -199,19 +212,19 @@
     <!-- STAGE 2: THE ROYAL INVITATION SCROLL / PATRIKA -->
     <!-- ============================================== -->
     <div id="invitation" class="invitation" hidden>
-      
+
       <!-- Top Royal Gateway Arches Header -->
       <header class="royal-gateway section-shell">
         <div class="arch-frame" aria-hidden="true"></div>
-        
+
         <div class="shree-symbol hindi" id="shreeGaneshInvocation">॥ श्री गणेशाय नमः ॥</div>
-        
+
         <!-- Sacred Shloka -->
         <blockquote class="sacred-shloka hindi" id="sacredShloka">
           वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
           निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
         </blockquote>
-        
+
         <p class="royal-invoking-text" id="invokingTextEn">
           By the grace of God and with the eternal blessings of our revered ancestors &amp; beloved parents,
         </p>
@@ -287,7 +300,8 @@
 
         <!-- Animated Scroll Down Guide Indicator -->
         <div class="gateway-scroll-indicator" id="gatewayScrollIndicator">
-          <button class="scroll-indicator-btn" id="scrollExploreBtn" type="button" aria-label="Scroll down to explore rituals">
+          <button class="scroll-indicator-btn" id="scrollExploreBtn" type="button"
+            aria-label="Scroll down to explore rituals">
             <span class="scroll-mouse-icon" aria-hidden="true">
               <span class="scroll-wheel"></span>
             </span>
@@ -334,7 +348,8 @@
               <span class="btn-ring-icon">💍</span>
               <span class="btn-text">Touch to Exchange Rings &amp; Bless the Couple</span>
             </button>
-            <p class="ring-status-text" id="ringStatusMsg">Tap the button above to view the royal ring exchange ceremony!</p>
+            <p class="ring-status-text" id="ringStatusMsg">Tap the button above to view the royal ring exchange
+              ceremony!</p>
           </div>
 
           <div class="ceremony-quote-box">
@@ -418,9 +433,12 @@
               </div>
             </div>
             <ul class="event-details-list">
-              <li class="event-detail-item"><span class="detail-label">DATE</span><span class="detail-val">Wednesday, 11 November 2026</span></li>
-              <li class="event-detail-item"><span class="detail-label">TIME</span><span class="detail-val">12:00 PM</span></li>
-              <li class="event-detail-item"><span class="detail-label">VENUE</span><span class="detail-val">Hotel Raj Palace</span></li>
+              <li class="event-detail-item"><span class="detail-label">DATE</span><span class="detail-val">Wednesday, 11
+                  November 2026</span></li>
+              <li class="event-detail-item"><span class="detail-label">TIME</span><span class="detail-val">12:00
+                  PM</span></li>
+              <li class="event-detail-item"><span class="detail-label">VENUE</span><span class="detail-val">Hotel Raj
+                  Palace</span></li>
             </ul>
           </article>
           <article class="event-card">
@@ -432,9 +450,12 @@
               </div>
             </div>
             <ul class="event-details-list">
-              <li class="event-detail-item"><span class="detail-label">DATE</span><span class="detail-val">Wednesday, 11 November 2026</span></li>
-              <li class="event-detail-item"><span class="detail-label">TIME</span><span class="detail-val">01:00 PM</span></li>
-              <li class="event-detail-item"><span class="detail-label">VENUE</span><span class="detail-val">Hotel Raj Palace</span></li>
+              <li class="event-detail-item"><span class="detail-label">DATE</span><span class="detail-val">Wednesday, 11
+                  November 2026</span></li>
+              <li class="event-detail-item"><span class="detail-label">TIME</span><span class="detail-val">01:00
+                  PM</span></li>
+              <li class="event-detail-item"><span class="detail-label">VENUE</span><span class="detail-val">Hotel Raj
+                  Palace</span></li>
             </ul>
           </article>
           <article class="event-card">
@@ -446,9 +467,12 @@
               </div>
             </div>
             <ul class="event-details-list">
-              <li class="event-detail-item"><span class="detail-label">DATE</span><span class="detail-val">Wednesday, 11 November 2026</span></li>
-              <li class="event-detail-item"><span class="detail-label">TIME</span><span class="detail-val">02:00 PM</span></li>
-              <li class="event-detail-item"><span class="detail-label">VENUE</span><span class="detail-val">Hotel Raj Palace</span></li>
+              <li class="event-detail-item"><span class="detail-label">DATE</span><span class="detail-val">Wednesday, 11
+                  November 2026</span></li>
+              <li class="event-detail-item"><span class="detail-label">TIME</span><span class="detail-val">02:00
+                  PM</span></li>
+              <li class="event-detail-item"><span class="detail-label">VENUE</span><span class="detail-val">Hotel Raj
+                  Palace</span></li>
             </ul>
           </article>
         </div>
@@ -461,23 +485,23 @@
         <div class="venue-jharokha">
           <div class="venue-palace-icon" aria-hidden="true">
             <svg viewBox="0 0 100 80" class="palace-svg">
-              <path d="M50,5 L58,25 L42,25 Z M50,25 L50,35" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M20,35 Q50,15 80,35 L85,75 L15,75 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M50,5 L58,25 L42,25 Z M50,25 L50,35" stroke="currentColor" stroke-width="2" fill="none" />
+              <path d="M20,35 Q50,15 80,35 L85,75 L15,75 Z" fill="none" stroke="currentColor" stroke-width="2" />
               <!-- Arches -->
-              <path d="M40,75 L40,55 Q50,45 60,55 L60,75" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path d="M23,75 L23,62 Q28,55 33,62 L33,75" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M67,75 L67,62 Q72,55 77,62 L77,75" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M40,75 L40,55 Q50,45 60,55 L60,75" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M23,75 L23,62 Q28,55 33,62 L33,75" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M67,75 L67,62 Q72,55 77,62 L77,75" fill="none" stroke="currentColor" stroke-width="1.5" />
               <!-- Domes -->
-              <circle cx="50" cy="22" r="6" fill="currentColor"/>
-              <circle cx="28" cy="34" r="4.5" fill="currentColor"/>
-              <circle cx="72" cy="34" r="4.5" fill="currentColor"/>
+              <circle cx="50" cy="22" r="6" fill="currentColor" />
+              <circle cx="28" cy="34" r="4.5" fill="currentColor" />
+              <circle cx="72" cy="34" r="4.5" fill="currentColor" />
             </svg>
           </div>
 
           <p class="eyebrow-royal">THE ROYAL DESTINATION</p>
           <h2 class="section-title hindi">शुभ स्थल</h2>
           <h3 class="venue-name" id="venueName">Hotel Raj Palace</h3>
-          
+
           <div class="venue-address-card">
             <p class="venue-address" id="venueAddress">
               Krishi Upaj Mandi Road, Paharua, Katni, Madhya Pradesh 483501 (near Sai Mandir)
@@ -485,7 +509,8 @@
           </div>
 
           <div class="venue-action-buttons">
-            <a class="royal-btn-gold" id="mapLink" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">
+            <a class="royal-btn-gold" id="mapLink" href="https://maps.google.com/" target="_blank"
+              rel="noopener noreferrer">
               <span>📍 OPEN IN GOOGLE MAPS</span>
             </a>
             <button class="royal-btn-outline" id="copyAddressBtn" type="button">
@@ -509,7 +534,8 @@
           <form class="blessing-form" id="blessingForm">
             <div class="form-group">
               <label for="guestName">Your Full Name / आपका नाम</label>
-              <input type="text" id="guestName" required placeholder="e.g. Ramesh &amp; Anita Sharma" autocomplete="name">
+              <input type="text" id="guestName" required placeholder="e.g. Ramesh &amp; Anita Sharma"
+                autocomplete="name">
             </div>
             <div class="form-group">
               <label for="guestRelation">Relation or City / संबंध अथवा शहर</label>
@@ -517,7 +543,8 @@
             </div>
             <div class="form-group">
               <label for="guestMessage">Your Blessing Message / शुभकामना संदेश</label>
-              <textarea id="guestMessage" rows="3" required placeholder="Wishing Akansha &amp; Nilesh a lifetime of boundless happiness and eternal love..."></textarea>
+              <textarea id="guestMessage" rows="3" required
+                placeholder="Wishing Akansha &amp; Nilesh a lifetime of boundless happiness and eternal love..."></textarea>
             </div>
             <button type="submit" class="royal-btn-gold submit-blessing-btn">
               <span>🌸 SEND BLESSINGS / आशीर्वाद भेजें</span>
@@ -540,10 +567,12 @@
       <section class="closing-section section-shell">
         <div class="closing-mandala" aria-hidden="true">
           <svg viewBox="0 0 100 100" class="mandala-svg">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3"/>
-            <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M50,5 L50,95 M5,50 L95,50 M18,18 L82,82 M18,82 L82,18" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.2"
+              stroke-dasharray="2 3" />
+            <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <circle cx="50" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <path d="M50,5 L50,95 M5,50 L95,50 M18,18 L82,82 M18,82 L82,18" stroke="currentColor" stroke-width="1"
+              opacity="0.6" />
           </svg>
         </div>
 
@@ -592,4 +621,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
