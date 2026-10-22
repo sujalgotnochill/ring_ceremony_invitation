@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
   <meta name="theme-color" content="#3a050c">
   <meta name="description" content="Royal Indian Ring Ceremony & Engagement Invitation">
   <title>Ring Ceremony Invitation | Akansha &amp; Nilesh</title>
@@ -21,6 +21,7 @@
 <body>
   <!-- Background Petal & Sparkle Canvas -->
   <canvas id="petalCanvas" class="petal-canvas" aria-hidden="true"></canvas>
+  <canvas id="sparkleCanvas" class="sparkle-canvas" aria-hidden="true"></canvas>
 
   <!-- Ambient Royal Light Halos -->
   <div class="ambient-glow glow-top" aria-hidden="true"></div>
@@ -84,125 +85,187 @@
     <!-- STAGE 1: THE ROYAL ENVELOPE & WAX SEAL COVER   -->
     <!-- ============================================== -->
     <section class="cover" id="cover" aria-label="Royal Invitation Envelope">
-      <div class="envelope-scene">
+      <div class="envelope-scene" id="envelopeScene">
 
-        <!-- Toran / Traditional Marigold Garland Decoration at Top -->
+        <!-- Traditional Marigold Toran with Swinging Bells -->
         <div class="royal-toran" aria-hidden="true">
           <svg viewBox="0 0 1200 80" preserveAspectRatio="none" class="toran-svg">
+            <defs>
+              <linearGradient id="bellGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff6d0" />
+                <stop offset="50%" stop-color="#e5be59" />
+                <stop offset="100%" stop-color="#936d18" />
+              </linearGradient>
+            </defs>
             <path d="M0,0 Q150,60 300,0 Q450,60 600,0 Q750,60 900,0 Q1050,60 1200,0" fill="none" stroke="#e8ba51"
               stroke-width="3" />
             <path d="M0,0 Q150,75 300,0 Q450,75 600,0 Q750,75 900,0 Q1050,75 1200,0" fill="none" stroke="#d4af37"
               stroke-dasharray="8 8" stroke-width="2" />
-            <!-- Hanging bells and marigolds -->
-            <g fill="#f5cf6d">
-              <circle cx="150" cy="55" r="7" />
-              <circle cx="450" cy="55" r="7" />
-              <circle cx="750" cy="55" r="7" />
-              <circle cx="1050" cy="55" r="7" />
+            
+            <!-- Hanging bells with pendulum harmonic sway -->
+            <g class="swinging-bell bell-1">
+              <line x1="150" y1="0" x2="150" y2="44" stroke="#d4af37" stroke-width="2" />
+              <path d="M142,44 C142,34 158,34 158,44 L161,54 L139,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <circle cx="150" cy="57" r="3" fill="#ffeaa7" />
+            </g>
+            <g class="swinging-bell bell-2">
+              <line x1="450" y1="0" x2="450" y2="44" stroke="#d4af37" stroke-width="2" />
+              <path d="M442,44 C442,34 458,34 458,44 L461,54 L439,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <circle cx="450" cy="57" r="3" fill="#ffeaa7" />
+            </g>
+            <g class="swinging-bell bell-3">
+              <line x1="750" y1="0" x2="750" y2="44" stroke="#d4af37" stroke-width="2" />
+              <path d="M742,44 C742,34 758,34 758,44 L761,54 L739,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <circle cx="750" cy="57" r="3" fill="#ffeaa7" />
+            </g>
+            <g class="swinging-bell bell-4">
+              <line x1="1050" y1="0" x2="1050" y2="44" stroke="#d4af37" stroke-width="2" />
+              <path d="M1042,44 C1042,34 1058,34 1058,44 L1061,54 L1039,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <circle cx="1050" cy="57" r="3" fill="#ffeaa7" />
             </g>
           </svg>
         </div>
 
-        <div class="envelope-card" id="envelopeWrapper">
-          <!-- Envelope Gold Filigree Borders -->
-          <div class="gold-corner top-left" aria-hidden="true"></div>
-          <div class="gold-corner top-right" aria-hidden="true"></div>
-          <div class="gold-corner bottom-left" aria-hidden="true"></div>
-          <div class="gold-corner bottom-right" aria-hidden="true"></div>
+        <!-- Auspicious Burning Diyas flanking Envelope -->
+        <div class="auspicious-diya diya-envelope-left" aria-hidden="true" title="Auspicious Diya">
+          <div class="diya-glow"></div>
+          <div class="diya-flame-wrap">
+            <span class="flame-outer"></span>
+            <span class="flame-inner"></span>
+            <span class="flame-spark"></span>
+          </div>
+          <div class="diya-pot"></div>
+        </div>
 
-          <!-- Auspicious Shree Ganesh Icon with Halo -->
-          <div class="ganesh-halo-wrapper">
-            <div class="ganesh-halo" aria-hidden="true"></div>
-            <div class="ganesh-svg-container" aria-label="Shree Ganesha">
-              <!-- Handcrafted Elegant Golden Ganesha SVG -->
-              <svg viewBox="0 0 100 100" class="ganesh-svg">
-                <path
-                  d="M50 8 C40 8 32 15 32 25 C32 35 40 40 45 44 C42 45 35 48 30 54 C24 61 24 72 32 80 C38 86 48 88 56 86 C64 84 72 78 74 68 C76 58 72 52 66 48 C72 44 76 38 74 30 C72 20 62 14 55 12 Z"
-                  fill="none" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
-                <!-- Trunk swirl -->
-                <path d="M52 38 Q58 48 56 62 Q54 74 44 76 Q38 78 36 72 Q35 66 42 63 Q48 61 48 54" fill="none"
-                  stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
-                <!-- Crown / Mukut -->
-                <path d="M43 14 L50 4 L57 14 Z" fill="url(#goldGradient)" />
-                <!-- Sacred Modak -->
-                <circle cx="68" cy="62" r="4.5" fill="url(#goldGradient)" />
-                <!-- Tilak -->
-                <path d="M49 19 Q50 25 51 19 Z" fill="#c32222" />
-                <circle cx="50" cy="18" r="2" fill="#f8d675" />
-                <!-- Radial Gold Gradient Definition -->
-                <defs>
-                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#fff0be" />
-                    <stop offset="50%" stop-color="#dfb54e" />
-                    <stop offset="100%" stop-color="#9d741c" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <p class="ganesh-mantra hindi" id="coverBlessing">॥ श्री गणेशाय नमः ॥</p>
+        <div class="auspicious-diya diya-envelope-right" aria-hidden="true" title="Auspicious Diya">
+          <div class="diya-glow"></div>
+          <div class="diya-flame-wrap">
+            <span class="flame-outer"></span>
+            <span class="flame-inner"></span>
+            <span class="flame-spark"></span>
+          </div>
+          <div class="diya-pot"></div>
+        </div>
+
+        <!-- Royal 3D Envelope Wrapper -->
+        <div class="envelope-card-container">
+          <!-- 3D Envelope Flap that flips open on click -->
+          <div class="envelope-top-flap" id="envelopeTopFlap" aria-hidden="true">
+            <div class="flap-border-trig"></div>
+            <div class="flap-motif">❖</div>
           </div>
 
-          <div class="ornate-divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-symbol">❖ ॐ ❖</span>
-            <span class="divider-line"></span>
+          <!-- Golden Horizontal Ribbon that unties -->
+          <div class="envelope-ribbon ribbon-horizontal" id="envelopeRibbon" aria-hidden="true">
+            <span class="ribbon-line"></span>
           </div>
 
-          <p class="invitation-tagline">WITH THE BLESSINGS OF OUR ELDERS</p>
-          <h1 class="shahi-title hindi" id="coverEventTypeHindi">शुभ सगाई समारोह</h1>
-          <p class="ceremony-sub hindi">अंगूठी रस्म एवं मांगलिक आमंत्रण</p>
-          <p class="ceremony-sub-en">THE ROYAL RING CEREMONY &amp; ENGAGEMENT</p>
+          <div class="envelope-card" id="envelopeWrapper">
+            <!-- Envelope Gold Filigree Borders -->
+            <div class="gold-corner top-left" aria-hidden="true"></div>
+            <div class="gold-corner top-right" aria-hidden="true"></div>
+            <div class="gold-corner bottom-left" aria-hidden="true"></div>
+            <div class="gold-corner bottom-right" aria-hidden="true"></div>
 
-          <!-- Intertwined Rings Golden Seal Visual -->
-          <div class="wax-seal-wrapper">
-            <div class="seal-glow-ring"></div>
-            <button class="royal-wax-seal" id="waxSealBtn" type="button" aria-label="Open Invitation">
-              <div class="seal-inner">
-                <span class="seal-symbol">💍</span>
-                <span class="seal-text hindi">शुभम्</span>
-              </div>
-            </button>
-            <p class="seal-instruction">TOUCH TO OPEN THE ROYAL INVITATION</p>
-          </div>
+            <!-- Shimmer Light Sweep on Cover -->
+            <div class="card-shimmer-sweep" aria-hidden="true"></div>
 
-          <!-- Couple Names on Cover -->
-          <div class="cover-couple">
-            <h2 class="cover-bride-groom">
-              <span class="bride-name" id="coverBride">Akansha</span>
-              <span class="cover-knot">
-                <svg viewBox="0 0 40 25" class="knot-svg">
-                  <path d="M5,12 C15,0 25,24 35,12" fill="none" stroke="currentColor" stroke-width="2.5" />
-                  <circle cx="20" cy="12" r="3.5" fill="currentColor" />
+            <!-- Auspicious Shree Ganesh Icon with Divine Halo -->
+            <div class="ganesh-halo-wrapper">
+              <div class="ganesh-mandala-rays" aria-hidden="true"></div>
+              <div class="ganesh-halo" aria-hidden="true"></div>
+              <div class="ganesh-svg-container" aria-label="Shree Ganesha">
+                <!-- Handcrafted Elegant Golden Ganesha SVG -->
+                <svg viewBox="0 0 100 100" class="ganesh-svg">
+                  <path
+                    d="M50 8 C40 8 32 15 32 25 C32 35 40 40 45 44 C42 45 35 48 30 54 C24 61 24 72 32 80 C38 86 48 88 56 86 C64 84 72 78 74 68 C76 58 72 52 66 48 C72 44 76 38 74 30 C72 20 62 14 55 12 Z"
+                    fill="none" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
+                  <!-- Trunk swirl -->
+                  <path d="M52 38 Q58 48 56 62 Q54 74 44 76 Q38 78 36 72 Q35 66 42 63 Q48 61 48 54" fill="none"
+                    stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
+                  <!-- Crown / Mukut -->
+                  <path d="M43 14 L50 4 L57 14 Z" fill="url(#goldGradient)" />
+                  <!-- Sacred Modak -->
+                  <circle cx="68" cy="62" r="4.5" fill="url(#goldGradient)" />
+                  <!-- Tilak -->
+                  <path d="M49 19 Q50 25 51 19 Z" fill="#c32222" />
+                  <circle cx="50" cy="18" r="2" fill="#f8d675" />
+                  <!-- Radial Gold Gradient Definition -->
+                  <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fff0be" />
+                      <stop offset="50%" stop-color="#dfb54e" />
+                      <stop offset="100%" stop-color="#9d741c" />
+                    </linearGradient>
+                  </defs>
                 </svg>
-                <i>&amp;</i>
-              </span>
-              <span class="groom-name" id="coverGroom">Nilesh</span>
-            </h2>
-          </div>
+              </div>
+              <p class="ganesh-mantra hindi" id="coverBlessing">॥ श्री गणेशाय नमः ॥</p>
+            </div>
 
-          <div class="date-badge">
-            <span class="date-icon">✦</span>
-            <span id="coverDate">Wednesday, 11 November 2026</span>
-            <span class="date-icon">✦</span>
-          </div>
+            <div class="ornate-divider" aria-hidden="true">
+              <span class="divider-line"></span>
+              <span class="divider-symbol">❖ ॐ ❖</span>
+              <span class="divider-line"></span>
+            </div>
 
-          <div class="action-btn-wrapper">
-            <button class="royal-btn-primary" id="openInvite" type="button">
-              <span class="btn-sheen" aria-hidden="true"></span>
-              <span class="btn-hindi hindi">शुभ आमंत्रण खोलें</span>
-              <span class="btn-sub">OPEN ROYAL INVITATION</span>
-              <span class="btn-arrow" aria-hidden="true">↓</span>
-            </button>
-            <p class="cover-scroll-hint hindi" aria-hidden="true">आमंत्रण खोलें एवं संपूर्ण मांगलिक कार्यक्रम देखें ↓
+            <p class="invitation-tagline">WITH THE BLESSINGS OF OUR ELDERS</p>
+            <h1 class="shahi-title hindi" id="coverEventTypeHindi">शुभ सगाई समारोह</h1>
+            <p class="ceremony-sub hindi">अंगूठी रस्म एवं मांगलिक आमंत्रण</p>
+            <p class="ceremony-sub-en">THE ROYAL RING CEREMONY &amp; ENGAGEMENT</p>
+
+            <!-- Intertwined Rings Golden Seal Visual with 3D tactile press -->
+            <div class="wax-seal-wrapper" id="waxSealWrapper">
+              <div class="seal-glow-ring"></div>
+              <div class="seal-rays-burst" aria-hidden="true"></div>
+              <button class="royal-wax-seal" id="waxSealBtn" type="button" aria-label="Open Royal Invitation">
+                <div class="seal-inner">
+                  <span class="seal-symbol">💍</span>
+                  <span class="seal-text hindi">शुभम्</span>
+                </div>
+              </button>
+              <p class="seal-instruction">TOUCH TO OPEN THE ROYAL INVITATION</p>
+            </div>
+
+            <!-- Couple Names on Cover with Embossed Luxury Gold -->
+            <div class="cover-couple">
+              <h2 class="cover-bride-groom">
+                <span class="bride-name" id="coverBride">Akansha</span>
+                <span class="cover-knot">
+                  <svg viewBox="0 0 40 25" class="knot-svg">
+                    <path d="M5,12 C15,0 25,24 35,12" fill="none" stroke="currentColor" stroke-width="2.5" />
+                    <circle cx="20" cy="12" r="3.5" fill="currentColor" />
+                  </svg>
+                  <i>&amp;</i>
+                </span>
+                <span class="groom-name" id="coverGroom">Nilesh</span>
+              </h2>
+            </div>
+
+            <div class="date-badge">
+              <span class="date-icon">✦</span>
+              <span id="coverDate">Wednesday, 11 November 2026</span>
+              <span class="date-icon">✦</span>
+            </div>
+
+            <div class="action-btn-wrapper">
+              <button class="royal-btn-primary" id="openInvite" type="button">
+                <span class="btn-sheen" aria-hidden="true"></span>
+                <span class="btn-hindi hindi">शुभ आमंत्रण खोलें</span>
+                <span class="btn-sub">OPEN ROYAL INVITATION</span>
+                <span class="btn-arrow" aria-hidden="true">↓</span>
+              </button>
+              <p class="cover-scroll-hint hindi" aria-hidden="true">आमंत्रण खोलें एवं संपूर्ण मांगलिक कार्यक्रम देखें ↓
+              </p>
+            </div>
+
+            <p class="cover-shloka hindi" id="coverShloka">
+              "दो दिलों का यह पवित्र बंधन, प्रेम और विश्वास की अमर कहानी बने"
             </p>
-          </div>
 
-          <p class="cover-shloka hindi" id="coverShloka">
-            "दो दिलों का यह पवित्र बंधन, प्रेम और विश्वास की अमर कहानी बने"
-          </p>
-
-          <div class="cover-bottom-motif" aria-hidden="true">
-            <span>❧</span> <span>⚜</span> <span>☙</span>
+            <div class="cover-bottom-motif" aria-hidden="true">
+              <span>❧</span> <span>⚜</span> <span>☙</span>
+            </div>
           </div>
         </div>
       </div>
@@ -214,8 +277,28 @@
     <div id="invitation" class="invitation" hidden>
 
       <!-- Top Royal Gateway Arches Header -->
-      <header class="royal-gateway section-shell">
+      <header class="royal-gateway section-shell reveal-section">
         <div class="arch-frame" aria-hidden="true"></div>
+
+        <!-- Flanking Gateway Diyas -->
+        <div class="gateway-diya-pair" aria-hidden="true">
+          <div class="auspicious-diya gateway-diya-left">
+            <div class="diya-glow"></div>
+            <div class="diya-flame-wrap">
+              <span class="flame-outer"></span>
+              <span class="flame-inner"></span>
+            </div>
+            <div class="diya-pot"></div>
+          </div>
+          <div class="auspicious-diya gateway-diya-right">
+            <div class="diya-glow"></div>
+            <div class="diya-flame-wrap">
+              <span class="flame-outer"></span>
+              <span class="flame-inner"></span>
+            </div>
+            <div class="diya-pot"></div>
+          </div>
+        </div>
 
         <div class="shree-symbol hindi" id="shreeGaneshInvocation">॥ श्री गणेशाय नमः ॥</div>
 
@@ -232,8 +315,9 @@
           हम अत्यंत हर्ष और स्नेहपूर्वक आपको हमारे परिवार के शुभ आयोजन में सादर आमंत्रित करते हैं।
         </p>
 
-        <!-- Monogram Crest -->
+        <!-- Monogram Crest with Radiant Halo Rays -->
         <div class="royal-crest" aria-hidden="true">
+          <div class="crest-mandala-spin"></div>
           <div class="crest-shield">
             <span class="monogram" id="crestMonogram">A 💍 N</span>
           </div>
@@ -243,10 +327,18 @@
         <h1 class="grand-heading hindi" id="grandHeading">शुभ सगाई समारोह</h1>
         <p class="grand-sub">CELEBRATING THE ENGAGEMENT &amp; RING CEREMONY OF</p>
 
-        <!-- Couple Showcase -->
+        <!-- Couple Showcase with Interactive 3D Tilt Cards -->
         <div class="couple-spotlight" id="coupleSpotlight">
           <!-- Bride Card -->
-          <div class="couple-card bride-card">
+          <div class="couple-card bride-card tilt-card" data-tilt>
+            <div class="jharokha-arch-crown" aria-hidden="true">
+              <svg viewBox="0 0 160 30" class="jharokha-crown-svg">
+                <path d="M10,28 Q40,6 80,18 Q120,6 150,28" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" />
+                <circle cx="80" cy="18" r="4" fill="url(#goldGradient)" />
+                <circle cx="45" cy="22" r="2.5" fill="url(#goldGradient)" />
+                <circle cx="115" cy="22" r="2.5" fill="url(#goldGradient)" />
+              </svg>
+            </div>
             <div class="jharokha-frame">
               <div class="avatar-emblem">
                 <span class="avatar-ring-icon">✦</span>
@@ -256,10 +348,12 @@
               <p class="relation-role hindi">सुपुत्री (Daughter of)</p>
               <p class="parents-name" id="brideParents">Smt. Maya &amp; Late Shri Rajesh Vishwakarma ji</p>
             </div>
+            <div class="card-shimmer-sweep" aria-hidden="true"></div>
           </div>
 
           <!-- Center Royal Connection -->
           <div class="couple-knot-center">
+            <div class="knot-glow-halo" aria-hidden="true"></div>
             <div class="glowing-rings-icon" aria-hidden="true">💍</div>
             <div class="knot-word">TOGETHER WITH</div>
             <div class="knot-hindi hindi">संग</div>
@@ -267,7 +361,15 @@
           </div>
 
           <!-- Groom Card -->
-          <div class="couple-card groom-card">
+          <div class="couple-card groom-card tilt-card" data-tilt>
+            <div class="jharokha-arch-crown" aria-hidden="true">
+              <svg viewBox="0 0 160 30" class="jharokha-crown-svg">
+                <path d="M10,28 Q40,6 80,18 Q120,6 150,28" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" />
+                <circle cx="80" cy="18" r="4" fill="url(#goldGradient)" />
+                <circle cx="45" cy="22" r="2.5" fill="url(#goldGradient)" />
+                <circle cx="115" cy="22" r="2.5" fill="url(#goldGradient)" />
+              </svg>
+            </div>
             <div class="jharokha-frame">
               <div class="avatar-emblem">
                 <span class="avatar-ring-icon">✦</span>
@@ -277,6 +379,7 @@
               <p class="relation-role hindi">सुपुत्र (Son of)</p>
               <p class="parents-name" id="groomParents">Smt. Khushlata &amp; Shri Mansukhlal Vishwakarma ji</p>
             </div>
+            <div class="card-shimmer-sweep" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -315,7 +418,7 @@
       <!-- ============================================== -->
       <!-- SECTION 2: INTERACTIVE SACRED RING CEREMONY   -->
       <!-- ============================================== -->
-      <section class="rings-ceremony-section section-shell" id="ringSection">
+      <section class="rings-ceremony-section section-shell reveal-section" id="ringSection">
         <div class="gold-arch-banner" aria-hidden="true"></div>
         <p class="eyebrow-royal">TWO SOULS · ONE SACRED PROMISE</p>
         <h2 class="section-title hindi">पवित्र मुद्रिका अर्पण</h2>
@@ -323,22 +426,32 @@
 
         <!-- Interactive Animated Interlocking Rings -->
         <div class="interactive-rings-box">
+          <!-- Floating celebratory particles container on exchange -->
+          <div class="rings-floating-burst" id="ringsFloatingBurst" aria-hidden="true"></div>
+
           <div class="rings-visual-stage" id="ringsStage">
             <!-- Diamond Solitaire Ring -->
             <div class="ring-obj ring-bride" id="brideRing">
-              <div class="diamond-sparkle"></div>
-              <div class="ring-band"></div>
+              <div class="diamond-sparkle">
+                <span class="glint-ray ray-h"></span>
+                <span class="glint-ray ray-v"></span>
+                <span class="glint-ray ray-d1"></span>
+                <span class="glint-ray ray-d2"></span>
+              </div>
+              <div class="diamond-facets-crown" aria-hidden="true"></div>
+              <div class="ring-band bride-band"></div>
               <span class="ring-tag" id="brideRingTag">Akansha</span>
             </div>
-            <!-- Golden Glow Conjunction -->
+            <!-- Golden Glow Conjunction & Shockwave -->
             <div class="rings-union-spark" id="unionSpark">
               <span class="spark-core"></span>
               <span class="spark-burst"></span>
+              <span class="spark-shockwave"></span>
             </div>
             <!-- Groom's Gold Band Ring -->
             <div class="ring-obj ring-groom" id="groomRing">
-              <div class="gold-engraving"></div>
-              <div class="ring-band"></div>
+              <div class="gold-engraving-pattern" aria-hidden="true"></div>
+              <div class="ring-band groom-band"></div>
               <span class="ring-tag" id="groomRingTag">Nilesh</span>
             </div>
           </div>
@@ -367,7 +480,7 @@
       <!-- ============================================== -->
       <!-- SECTION 3: AUSPICIOUS COUNTDOWN TIMER         -->
       <!-- ============================================== -->
-      <section class="countdown-section section-shell">
+      <section class="countdown-section section-shell reveal-section">
         <div class="countdown-container">
           <div class="ornament-top hindi" aria-hidden="true">॥ शुभ मुहूर्त ॥</div>
           <p class="eyebrow-royal">THE SACRED MOMENTS DRAW NEAR</p>
@@ -418,10 +531,17 @@
       <!-- ============================================== -->
       <!-- SECTION 4: CEREMONY ITINERARY / TIMELINE       -->
       <!-- ============================================== -->
-      <section class="itinerary-section section-shell" id="eventsSection">
+      <section class="itinerary-section section-shell reveal-section" id="eventsSection">
         <p class="eyebrow-royal">THREE SACRED MILESTONES</p>
         <h2 class="section-title hindi">ओली · वरीक्षा · सगाई समारोह</h2>
         <p class="section-lead">Join us in celebrating the three sacred rituals of our joyous union</p>
+
+        <!-- Connected Royal Golden Timeline Track -->
+        <div class="timeline-royal-connector" aria-hidden="true">
+          <div class="connector-track">
+            <span class="connector-glow-pulse"></span>
+          </div>
+        </div>
 
         <div class="itinerary-grid" id="eventGrid">
           <article class="event-card">
@@ -481,8 +601,8 @@
       <!-- ============================================== -->
       <!-- SECTION 5: VENUE & ROYAL PALACE NAVIGATION     -->
       <!-- ============================================== -->
-      <section class="venue-section section-shell">
-        <div class="venue-jharokha">
+      <section class="venue-section section-shell reveal-section">
+        <div class="venue-jharokha tilt-card" data-tilt>
           <div class="venue-palace-icon" aria-hidden="true">
             <svg viewBox="0 0 100 80" class="palace-svg">
               <path d="M50,5 L58,25 L42,25 Z M50,25 L50,35" stroke="currentColor" stroke-width="2" fill="none" />
@@ -523,7 +643,7 @@
       <!-- ============================================== -->
       <!-- SECTION 6: INTERACTIVE GUESTBOOK & BLESSINGS  -->
       <!-- ============================================== -->
-      <section class="blessings-section section-shell">
+      <section class="blessings-section section-shell reveal-section">
         <div class="gold-crest-mini">❦</div>
         <p class="eyebrow-royal">SHOWER YOUR LOVE</p>
         <h2 class="section-title hindi">सस्नेह आशीर्वाद एवं शुभकामनाएं</h2>
@@ -531,7 +651,7 @@
 
         <div class="blessings-wrapper">
           <!-- Blessing Submission Form -->
-          <form class="blessing-form" id="blessingForm">
+          <form class="blessing-form tilt-card" id="blessingForm" data-tilt>
             <div class="form-group">
               <label for="guestName">Your Full Name / आपका नाम</label>
               <input type="text" id="guestName" required placeholder="e.g. Ramesh &amp; Anita Sharma"
@@ -564,7 +684,7 @@
       <!-- ============================================== -->
       <!-- SECTION 7: ROYAL INVITATION CLOSING & FAMILY  -->
       <!-- ============================================== -->
-      <section class="closing-section section-shell">
+      <section class="closing-section section-shell reveal-section">
         <div class="closing-mandala" aria-hidden="true">
           <svg viewBox="0 0 100 100" class="mandala-svg">
             <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.2"

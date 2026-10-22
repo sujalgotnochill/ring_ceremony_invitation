@@ -179,7 +179,8 @@ function renderConfig() {
     grid.replaceChildren();
     CONFIG.events.forEach((evt) => {
       const card = document.createElement("article");
-      card.className = "event-card";
+      card.className = "event-card tilt-card";
+      card.setAttribute("data-tilt", "");
 
       const headerRow = document.createElement("div");
       headerRow.className = "event-header-row";
@@ -224,7 +225,11 @@ function renderConfig() {
         list.append(li);
       });
 
-      card.append(headerRow, list);
+      const sweep = document.createElement("div");
+      sweep.className = "card-shimmer-sweep";
+      sweep.setAttribute("aria-hidden", "true");
+
+      card.append(headerRow, list, sweep);
       grid.append(card);
     });
   }
@@ -295,7 +300,7 @@ function setupWhatsAppShare() {
 }
 
 /* ==============================================================
-   COUNTDOWN TIMER
+   COUNTDOWN TIMER WITH TICK GLOW
    ============================================================== */
 function updateCountdown() {
   const target = new Date(CONFIG.ceremonyDateTime).getTime();
@@ -309,16 +314,49 @@ function updateCountdown() {
   const minutes = Math.floor(remaining / 60000);
   const seconds = Math.floor((remaining % 60000) / 1000);
 
-  setText("days", String(days).padStart(2, "0"));
-  setText("hours", String(hours).padStart(2, "0"));
-  setText("minutes", String(minutes).padStart(2, "0"));
-  setText("seconds", String(seconds).padStart(2, "0"));
+  const setWithTick = (id, val) => {
+    const el = byId(id);
+    if (!el) return;
+    const strVal = String(val).padStart(2, "0");
+    if (el.textContent !== strVal) {
+      el.textContent = strVal;
+      el.classList.remove("pulse");
+      void el.offsetWidth;
+      el.classList.add("pulse");
+    }
+  };
+
+  setWithTick("days", days);
+  setWithTick("hours", hours);
+  setWithTick("minutes", minutes);
+  setWithTick("seconds", seconds);
 }
 
 /* ==============================================================
    INTERACTIVE SACRED RING CEREMONY
    ============================================================== */
 let ringsInterlocked = false;
+
+function spawnRingsBlessingBurst() {
+  const container = byId("ringsFloatingBurst");
+  if (!container) return;
+
+  const symbols = ["💖", "✨", "💍", "🌸", "ॐ", "✦", "⚜", "🕊️"];
+  for (let i = 0; i < 16; i++) {
+    const mote = document.createElement("span");
+    mote.className = "floating-blessing-mote";
+    mote.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    mote.style.left = `${15 + Math.random() * 70}%`;
+    mote.style.fontSize = `${18 + Math.random() * 14}px`;
+    mote.style.animationDelay = `${Math.random() * 0.45}s`;
+    mote.style.animationDuration = `${1.8 + Math.random() * 1.2}s`;
+    container.appendChild(mote);
+
+    setTimeout(() => {
+      mote.remove();
+    }, 3200);
+  }
+}
 
 function setupRingInteraction() {
   const exchangeBtn = byId("exchangeRingsBtn");
@@ -332,13 +370,14 @@ function setupRingInteraction() {
     if (ringsInterlocked) {
       stage.classList.add("interlocked");
       if (statusMsg) {
-        statusMsg.textContent = "✨ The rings are united! Two souls bound in eternal devotion. ✨";
+        statusMsg.textContent = "✨ The sacred rings are united! Two souls bound in eternal devotion. ✨";
       }
       playChime();
-      showerPetals(40);
+      showerPetals(65);
+      spawnRingsBlessingBurst();
       showToast("💍 Sacred rings exchanged! Best wishes showered on the couple.");
       if (navigator.vibrate) {
-        navigator.vibrate([80, 40, 120]);
+        navigator.vibrate([70, 40, 100, 40, 140]);
       }
     } else {
       stage.classList.remove("interlocked");
@@ -480,21 +519,35 @@ function playChime() {
 
     const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6 celebratory arpeggio
     notes.forEach((freq, i) => {
+      // Fundamental pure tone
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-
       osc.type = "sine";
       osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
 
       gain.gain.setValueAtTime(0, ctx.currentTime + i * 0.08);
       gain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + i * 0.08 + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.8);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.85);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
-
       osc.start(ctx.currentTime + i * 0.08);
       osc.stop(ctx.currentTime + i * 0.08 + 0.9);
+
+      // Sweet temple chime bell overtone
+      const oscHarmonic = ctx.createOscillator();
+      const gainHarmonic = ctx.createGain();
+      oscHarmonic.type = "triangle";
+      oscHarmonic.frequency.setValueAtTime(freq * 2.01, ctx.currentTime + i * 0.08);
+
+      gainHarmonic.gain.setValueAtTime(0, ctx.currentTime + i * 0.08);
+      gainHarmonic.gain.linearRampToValueAtTime(0.04, ctx.currentTime + i * 0.08 + 0.015);
+      gainHarmonic.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i * 0.08 + 0.5);
+
+      oscHarmonic.connect(gainHarmonic);
+      gainHarmonic.connect(ctx.destination);
+      oscHarmonic.start(ctx.currentTime + i * 0.08);
+      oscHarmonic.stop(ctx.currentTime + i * 0.08 + 0.55);
     });
   } catch (e) {
     // Audio context silent ignore
@@ -595,17 +648,28 @@ function setupAudio() {
 }
 
 /* ==============================================================
-   ENVELOPE OPENING ANIMATION
+   ENVELOPE OPENING ANIMATION (3D UNBOXING EXPERIENCE)
    ============================================================== */
 function setupEnvelopeOpening(audioControl) {
   const openBtn = byId("openInvite");
   const waxSeal = byId("waxSealBtn");
+  const sealWrapper = byId("waxSealWrapper");
+  const scene = byId("envelopeScene");
   const cover = byId("cover");
   const invitation = byId("invitation");
 
+  let isOpening = false;
+
   const openEnvelope = () => {
-    // Trigger floral & gold spark burst
-    showerPetals(60);
+    if (isOpening) return;
+    isOpening = true;
+
+    // Trigger visual seal break and 3D flap opening
+    if (sealWrapper) sealWrapper.classList.add("broken");
+    if (scene) scene.classList.add("open-flap");
+
+    // Celebratory burst of fragrant petals & golden stardust
+    showerPetals(80);
     playChime();
 
     // Start background music automatically on user gesture
@@ -613,12 +677,22 @@ function setupEnvelopeOpening(audioControl) {
       audioControl.startPlayback();
     }
 
-    cover.classList.add("dismiss");
+    if (navigator.vibrate) {
+      navigator.vibrate([60, 40, 110]);
+    }
+
+    // After 3D flap unfolds and ribbon slides, glide out the cover
+    setTimeout(() => {
+      cover.classList.add("dismiss");
+    }, 450);
 
     setTimeout(() => {
       cover.hidden = true;
       invitation.hidden = false;
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "instant" });
+
+      // Trigger scroll reveal on visible top sections
+      checkScrollReveal();
 
       // Reveal the floating scroll button inviting the guest to scroll
       const scrollPrompt = byId("floatingScrollPrompt");
@@ -628,7 +702,7 @@ function setupEnvelopeOpening(audioControl) {
           scrollPrompt.classList.add("visible");
         }, 50);
       }
-    }, 700);
+    }, 1050);
   };
 
   if (openBtn) openBtn.addEventListener("click", openEnvelope);
@@ -639,7 +713,6 @@ function setupEnvelopeOpening(audioControl) {
     const ganeshEl = byId("shreeGaneshInvocation");
     if (ganeshEl) {
       const rect = ganeshEl.getBoundingClientRect();
-      // If Ganeshji is already in or above center, scroll down to the couple spotlight
       if (rect.top < window.innerHeight * 0.45) {
         const nextEl = byId("coupleSpotlight") || byId("grandHeading");
         if (nextEl) {
@@ -670,7 +743,8 @@ function setupEnvelopeOpening(audioControl) {
     const scrollPrompt = byId("floatingScrollPrompt");
     if (!scrollPrompt || scrollPrompt.hidden) return;
 
-    if (window.pageYOffset > 380) {
+    const hideThreshold = window.innerWidth < 600 ? 220 : 380;
+    if (window.pageYOffset > hideThreshold) {
       scrollPrompt.classList.add("fade-out");
     } else {
       scrollPrompt.classList.remove("fade-out");
@@ -689,7 +763,7 @@ function setupEnvelopeOpening(audioControl) {
   const flowerBtn = byId("flowerShowerBtn");
   if (flowerBtn) {
     flowerBtn.addEventListener("click", () => {
-      showerPetals(50);
+      showerPetals(55);
       playChime();
       showToast("🌸 पुष्प वर्षा! Blessings showered!");
     });
@@ -697,7 +771,156 @@ function setupEnvelopeOpening(audioControl) {
 }
 
 /* ==============================================================
-   HTML5 CANVAS: TUMBLING ROSE PETALS & GOLDEN STARDUST
+   INTERACTIVE 3D PERSPECTIVE TILT (COUPLE CARDS & JHAROKHAS)
+   ============================================================== */
+function setupTiltCards() {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+
+  const tiltCards = document.querySelectorAll("[data-tilt]");
+  tiltCards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+/* ==============================================================
+   SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   ============================================================== */
+function setupScrollReveal() {
+  const sections = document.querySelectorAll(".reveal-section");
+  if (!("IntersectionObserver" in window)) {
+    sections.forEach((sec) => sec.classList.add("revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  sections.forEach((sec) => observer.observe(sec));
+}
+
+function checkScrollReveal() {
+  const sections = document.querySelectorAll(".reveal-section");
+  sections.forEach((sec) => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) {
+      sec.classList.add("revealed");
+    }
+  });
+}
+
+/* ==============================================================
+   INTERACTIVE AUSPICIOUS DIYA FLAME FLARE
+   ============================================================== */
+function setupDiyaInteractions() {
+  const diyas = document.querySelectorAll(".auspicious-diya");
+  diyas.forEach((diya) => {
+    const flare = () => {
+      diya.style.transform = "scale(1.3) translateY(-6px)";
+      playChime();
+      showerPetals(15);
+      showToast("🪔 शुभ दीप दर्शन! Auspicious light blessed.");
+      setTimeout(() => {
+        diya.style.transform = "";
+      }, 500);
+    };
+    diya.addEventListener("click", flare);
+  });
+}
+
+/* ==============================================================
+   GOLDEN CURSOR STARDUST TRAIL (DESKTOP)
+   ============================================================== */
+let cursorCanvas, cursorCtx;
+let cursorSparks = [];
+
+function initCursorTrail() {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+
+  cursorCanvas = byId("sparkleCanvas");
+  if (!cursorCanvas) return;
+  cursorCtx = cursorCanvas.getContext("2d");
+
+  const resize = () => {
+    cursorCanvas.width = window.innerWidth;
+    cursorCanvas.height = window.innerHeight;
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  window.addEventListener("mousemove", (e) => {
+    for (let i = 0; i < 2; i++) {
+      cursorSparks.push({
+        x: e.clientX + (Math.random() - 0.5) * 10,
+        y: e.clientY + (Math.random() - 0.5) * 10,
+        size: 2.2 + Math.random() * 3,
+        speedX: (Math.random() - 0.5) * 1.0,
+        speedY: (Math.random() - 0.5) * 1.0 - 0.3,
+        life: 1,
+        decay: 0.03 + Math.random() * 0.02,
+        color: Math.random() > 0.4 ? "#ffd978" : "#fff6d4"
+      });
+    }
+    if (cursorSparks.length > 55) cursorSparks.shift();
+  }, { passive: true });
+
+  const renderSparks = () => {
+    cursorCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+    for (let i = cursorSparks.length - 1; i >= 0; i--) {
+      const s = cursorSparks[i];
+      s.x += s.speedX;
+      s.y += s.speedY;
+      s.life -= s.decay;
+
+      if (s.life <= 0) {
+        cursorSparks.splice(i, 1);
+        continue;
+      }
+
+      cursorCtx.save();
+      cursorCtx.globalAlpha = s.life;
+      cursorCtx.fillStyle = s.color;
+      cursorCtx.shadowColor = s.color;
+      cursorCtx.shadowBlur = 6;
+      cursorCtx.beginPath();
+      const r = s.size * s.life;
+      cursorCtx.moveTo(s.x, s.y - r);
+      cursorCtx.quadraticCurveTo(s.x, s.y, s.x + r, s.y);
+      cursorCtx.quadraticCurveTo(s.x, s.y, s.x, s.y + r);
+      cursorCtx.quadraticCurveTo(s.x, s.y, s.x - r, s.y);
+      cursorCtx.quadraticCurveTo(s.x, s.y, s.x, s.y - r);
+      cursorCtx.fill();
+      cursorCtx.restore();
+    }
+    requestAnimationFrame(renderSparks);
+  };
+  renderSparks();
+}
+
+/* ==============================================================
+   HTML5 CANVAS: TUMBLING ROSE PETALS, JASMINE & GOLDEN STARDUST
    ============================================================== */
 let canvas, ctx;
 let particles = [];
@@ -712,15 +935,15 @@ class PetalParticle {
     this.x = Math.random() * width;
     this.y = isBurst ? Math.random() * (height * 0.4) : -20 - Math.random() * 50;
     this.size = 12 + Math.random() * 16;
-    this.speedY = 1.2 + Math.random() * 2.2;
+    this.speedY = 1.1 + Math.random() * 2.0;
     this.speedX = Math.sin(Math.random() * Math.PI) * 1.5;
     this.rotation = Math.random() * Math.PI * 2;
     this.rotSpeed = (Math.random() - 0.5) * 0.04;
     this.flutter = Math.random() * Math.PI;
     this.flutterSpeed = 0.03 + Math.random() * 0.03;
 
-    // Petal colors: Royal velvet crimson, soft rose, marigold yellow, and golden sparks
-    const types = ["crimson", "crimson", "rose", "marigold", "goldSpark"];
+    // Petal types: crimson rose, soft pink rose, marigold yellow, fragrant jasmine, gold star
+    const types = ["crimson", "crimson", "rose", "marigold", "jasmine", "goldSpark"];
     this.type = types[Math.floor(Math.random() * types.length)];
     this.opacity = 0.65 + Math.random() * 0.35;
   }
@@ -753,6 +976,21 @@ class PetalParticle {
       context.beginPath();
       context.arc(0, 0, this.size * 0.22, 0, Math.PI * 2);
       context.fill();
+    } else if (this.type === "jasmine") {
+      // Delicate white Jasmine / Mogra blossom
+      context.fillStyle = "#ffffff";
+      context.shadowColor = "#fff7d6";
+      context.shadowBlur = 4;
+      for (let i = 0; i < 4; i++) {
+        context.rotate(Math.PI / 2);
+        context.beginPath();
+        context.ellipse(0, this.size * 0.28, this.size * 0.16, this.size * 0.32, 0, 0, Math.PI * 2);
+        context.fill();
+      }
+      context.fillStyle = "#ffd978";
+      context.beginPath();
+      context.arc(0, 0, this.size * 0.1, 0, Math.PI * 2);
+      context.fill();
     } else {
       // Natural flower petal curve
       context.beginPath();
@@ -765,10 +1003,12 @@ class PetalParticle {
         context.shadowColor = "#3d050d";
         context.shadowBlur = 4;
       } else if (this.type === "rose") {
-        context.fillStyle = "#b8263e";
+        context.fillStyle = "#c22b44";
+        context.shadowColor = "#660b1b";
+        context.shadowBlur = 3;
       } else {
-        // Marigold
-        context.fillStyle = "#e59f24";
+        // Marigold (Genda)
+        context.fillStyle = "#f29e16";
         context.shadowColor = "#f5cf6d";
         context.shadowBlur = 6;
       }
@@ -791,12 +1031,11 @@ function initPetalCanvas() {
   resize();
   window.addEventListener("resize", resize);
 
-  // Initialize particle pool (around 35-40 particles for smooth 60fps)
-  const count = window.innerWidth < 600 ? 25 : 42;
+  const count = window.innerWidth < 600 ? 16 : 42;
   particles = [];
   for (let i = 0; i < count; i++) {
     const p = new PetalParticle(canvas.width, canvas.height);
-    p.y = Math.random() * canvas.height; // Spread initially
+    p.y = Math.random() * canvas.height;
     particles.push(p);
   }
 
@@ -812,15 +1051,18 @@ function initPetalCanvas() {
   loop();
 }
 
-function showerPetals(count = 45) {
+function showerPetals(count = 50) {
   if (!canvas) return;
-  for (let i = 0; i < count; i++) {
+  const isMobile = window.innerWidth < 600;
+  const actualCount = isMobile ? Math.min(count, 30) : count;
+  const maxAllowed = isMobile ? 65 : 130;
+
+  for (let i = 0; i < actualCount; i++) {
     const p = new PetalParticle(canvas.width, canvas.height, true);
     particles.push(p);
   }
-  // Trim array if grows too large
-  if (particles.length > 120) {
-    particles.splice(0, particles.length - 120);
+  if (particles.length > maxAllowed) {
+    particles.splice(0, particles.length - maxAllowed);
   }
 }
 
@@ -838,5 +1080,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupRingInteraction();
   setupBlessingForm();
   setupCopyAddress();
+  setupTiltCards();
+  setupScrollReveal();
+  setupDiyaInteractions();
   initPetalCanvas();
+  initCursorTrail();
 });
