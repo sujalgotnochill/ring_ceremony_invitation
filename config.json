@@ -1,14 +1,14 @@
 {
   "eventType": "Ring Ceremony & Engagement",
-  "eventTypeHindi": "शुभ सगाई एवं मुद्रिका अर्पण",
+  "eventTypeHindi": "शुभ सगाई समारोह",
   "invitationTagline": "WITH THE BLESSINGS OF OUR ELDERS",
   "ceremonySubHindi": "अंगूठी रस्म एवं मांगलिक आमंत्रण",
   "ceremonySubEn": "THE ROYAL RING CEREMONY & ENGAGEMENT",
   "coverShloka": "दो दिलों का यह पवित्र बंधन, प्रेम और विश्वास की अमर कहानी बने",
   "bride": "Akansha",
   "groom": "Nilesh",
-  "brideParents": "Smt. Maya & Late Shri Rajesh Vishwakarma",
-  "groomParents": "Smt. Kushlata & Shri Mansukhlal Vishwakarma",
+  "brideParents": "Smt. Maya & Late Shri Rajesh Vishwakarma ji",
+  "groomParents": "Smt. Khushlata & Shri Mansukhlal Vishwakarma ji",
   "ceremonyDateTime": "2026-11-11T12:00:00",
   "displayDate": "Wednesday, 11 November 2026",
   "displayTime": "12:00 PM Onwards",
@@ -28,27 +28,27 @@
   "closingCopy": "Your gracious presence and heartfelt blessings will make this sacred milestone truly memorable.",
   "events": [
     {
-      "symbol": "🌺",
-      "title": "Oli Ceremony",
-      "hindi": "शुभ ओली रस्म (मांगलिक शगुन)",
+      "symbol": "🪔",
+      "title": "Oli and Variksha Ceremony",
+      "hindi": "शुभ ओली एवं वरीक्षा रस्म ",
       "date": "Wednesday, 11 November 2026",
       "time": "12:00 PM",
       "venue": "Hotel Raj Palace"
     },
     {
-      "symbol": "🪔",
-      "title": "Variksha Ceremony",
-      "hindi": "वरीक्षा रस्म (तिलक एवं रोली-अक्षत)",
+      "symbol": "💍",
+      "title": "Ring Ceremony",
+      "hindi": "शुभ सगाई समारोह",
       "date": "Wednesday, 11 November 2026",
-      "time": "01:30 PM",
+      "time": "01:00 PM",
       "venue": "Hotel Raj Palace"
     },
     {
-      "symbol": "💍",
-      "title": "Sagai & Ring Exchange",
-      "hindi": "शुभ सगाई एवं मुद्रिका अर्पण",
+      "symbol": "🌺",
+      "title": "Lunch",
+      "hindi": "भोजन",
       "date": "Wednesday, 11 November 2026",
-      "time": "03:00 PM (शुभ मुहूर्त)",
+      "time": "02:00 PM",
       "venue": "Hotel Raj Palace"
     }
   ],
