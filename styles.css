@@ -2290,7 +2290,25 @@ footer {
   50% { filter: drop-shadow(0 0 24px rgba(255, 255, 255, 1)) brightness(1.2); }
 }
 
-/* Scroll Reveal Animations */
+/* ==============================================================
+   ROYAL TOP GOLDEN SCROLL PROGRESS THREAD (MOBILE & DESKTOP)
+   ============================================================== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #b8860b 0%, #dfb54e 45%, #ffffff 80%, #ffd978 100%);
+  box-shadow: 0 0 12px rgba(255, 234, 167, 0.95), 0 0 4px #ffffff;
+  z-index: 1000;
+  pointer-events: none;
+  transition: width 0.12s linear;
+}
+
+/* ==============================================================
+   SCROLL REVEAL ANIMATIONS (SECTION & GRANULAR ITEMS)
+   ============================================================== */
 .reveal-section {
   opacity: 0;
   transform: translateY(35px);
@@ -2301,6 +2319,94 @@ footer {
 .reveal-section.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+.reveal-item {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up {
+  transform: translateY(28px);
+}
+
+.reveal-left {
+  transform: translateX(-30px);
+}
+
+.reveal-right {
+  transform: translateX(30px);
+}
+
+.reveal-scale {
+  transform: scale(0.9);
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Staggered Entrance Delay Utilities */
+.reveal-delay-1 {
+  transition-delay: 0.12s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.24s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.36s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.48s;
+}
+
+/* Shimmer, Aura & Pop-in reactions upon item reveal */
+.couple-card.revealed .card-shimmer-sweep {
+  animation: cardShimmerSweep 5s ease-in-out infinite;
+}
+
+.timer-card.revealed {
+  animation: timerPopIn 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes timerPopIn {
+  0% { transform: translateY(18px) scale(0.92); opacity: 0; }
+  70% { transform: translateY(-3px) scale(1.03); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.event-card.revealed .event-symbol-badge {
+  animation: badgeFloat 3.4s ease-in-out infinite, badgeGlowPulse 1.8s ease-in-out 1;
+}
+
+@keyframes badgeGlowPulse {
+  0% { box-shadow: 0 0 0 rgba(245, 207, 109, 0); }
+  50% { box-shadow: 0 0 25px rgba(245, 207, 109, 0.9); }
+  100% { box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), 0 0 12px rgba(245, 207, 109, 0.3); }
+}
+
+.interactive-rings-box.invite-pulse {
+  animation: ringBoxAura 2.5s ease-in-out 1;
+}
+
+@keyframes ringBoxAura {
+  0% { box-shadow: var(--card-shadow), inset 0 0 50px rgba(0, 0, 0, 0.85); }
+  50% { box-shadow: var(--card-shadow), 0 0 35px rgba(245, 207, 109, 0.5), inset 0 0 50px rgba(245, 207, 109, 0.2); }
+  100% { box-shadow: var(--card-shadow), inset 0 0 50px rgba(0, 0, 0, 0.85); }
+}
+
+@media (max-width: 600px) {
+  .reveal-left {
+    transform: translateX(-16px);
+  }
+  .reveal-right {
+    transform: translateX(16px);
+  }
+  .reveal-up {
+    transform: translateY(18px);
+  }
 }
 
 @keyframes grandReveal {

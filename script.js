@@ -801,9 +801,9 @@ function setupTiltCards() {
    SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
    ============================================================== */
 function setupScrollReveal() {
-  const sections = document.querySelectorAll(".reveal-section");
+  const revealElements = document.querySelectorAll(".reveal-section, .reveal-item");
   if (!("IntersectionObserver" in window)) {
-    sections.forEach((sec) => sec.classList.add("revealed"));
+    revealElements.forEach((el) => el.classList.add("revealed"));
     return;
   }
 
@@ -812,23 +812,50 @@ function setupScrollReveal() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("revealed");
+          // If this is the rings ceremony section, trigger an inviting glow pulse on mobile
+          if (entry.target.id === "ringSection" || entry.target.classList.contains("rings-ceremony-section")) {
+            const ringsBox = entry.target.querySelector(".interactive-rings-box");
+            if (ringsBox) ringsBox.classList.add("invite-pulse");
+          }
         }
       });
     },
-    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
   );
 
-  sections.forEach((sec) => observer.observe(sec));
+  revealElements.forEach((el) => observer.observe(el));
+  window.addEventListener("scroll", checkScrollReveal, { passive: true });
 }
 
 function checkScrollReveal() {
-  const sections = document.querySelectorAll(".reveal-section");
-  sections.forEach((sec) => {
-    const rect = sec.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.95) {
-      sec.classList.add("revealed");
+  const revealElements = document.querySelectorAll(".reveal-section, .reveal-item");
+  revealElements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.96) {
+      el.classList.add("revealed");
     }
   });
+}
+
+/* ==============================================================
+   ROYAL TOP GOLDEN SCROLL PROGRESS THREAD
+   ============================================================== */
+function setupScrollProgressBar() {
+  const bar = byId("scrollProgressBar");
+  if (!bar) return;
+
+  const updateProgress = () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight <= 0) {
+      bar.style.width = "0%";
+      return;
+    }
+    const progress = Math.min(100, Math.max(0, (window.pageYOffset / totalHeight) * 100));
+    bar.style.width = `${progress.toFixed(1)}%`;
+  };
+
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
 }
 
 /* ==============================================================
@@ -841,6 +868,9 @@ function setupDiyaInteractions() {
       diya.style.transform = "scale(1.3) translateY(-6px)";
       playChime();
       showerPetals(15);
+      if (navigator.vibrate) {
+        navigator.vibrate([30, 20, 50]);
+      }
       showToast("🪔 शुभ दीप दर्शन! Auspicious light blessed.");
       setTimeout(() => {
         diya.style.transform = "";
@@ -851,14 +881,34 @@ function setupDiyaInteractions() {
 }
 
 /* ==============================================================
-   GOLDEN CURSOR STARDUST TRAIL (DESKTOP)
+   GOLDEN STARDUST: DESKTOP MOUSE TRAIL & MOBILE TOUCHBURST SPARKLES
    ============================================================== */
 let cursorCanvas, cursorCtx;
 let cursorSparks = [];
 
-function initCursorTrail() {
-  if (!window.matchMedia("(pointer: fine)").matches) return;
+function spawnTouchSparkles(x, y, count = 5) {
+  if (!cursorCanvas) return;
+  const colors = ["#ffd978", "#fff6d4", "#ffc048", "#ffffff"];
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
+    const speed = 1.0 + Math.random() * 2.8;
+    cursorSparks.push({
+      x: x + (Math.random() - 0.5) * 6,
+      y: y + (Math.random() - 0.5) * 6,
+      size: 2.8 + Math.random() * 3.6,
+      speedX: Math.cos(angle) * speed,
+      speedY: Math.sin(angle) * speed - 0.6,
+      life: 1,
+      decay: 0.035 + Math.random() * 0.025,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+  }
+  if (cursorSparks.length > 70) {
+    cursorSparks.splice(0, cursorSparks.length - 70);
+  }
+}
 
+function initSparkleCanvas() {
   cursorCanvas = byId("sparkleCanvas");
   if (!cursorCanvas) return;
   cursorCtx = cursorCanvas.getContext("2d");
@@ -870,20 +920,37 @@ function initCursorTrail() {
   resize();
   window.addEventListener("resize", resize);
 
-  window.addEventListener("mousemove", (e) => {
-    for (let i = 0; i < 2; i++) {
-      cursorSparks.push({
-        x: e.clientX + (Math.random() - 0.5) * 10,
-        y: e.clientY + (Math.random() - 0.5) * 10,
-        size: 2.2 + Math.random() * 3,
-        speedX: (Math.random() - 0.5) * 1.0,
-        speedY: (Math.random() - 0.5) * 1.0 - 0.3,
-        life: 1,
-        decay: 0.03 + Math.random() * 0.02,
-        color: Math.random() > 0.4 ? "#ffd978" : "#fff6d4"
-      });
+  // Desktop Mouse Stardust Trail
+  if (window.matchMedia("(pointer: fine)").matches) {
+    window.addEventListener("mousemove", (e) => {
+      for (let i = 0; i < 2; i++) {
+        cursorSparks.push({
+          x: e.clientX + (Math.random() - 0.5) * 10,
+          y: e.clientY + (Math.random() - 0.5) * 10,
+          size: 2.2 + Math.random() * 3,
+          speedX: (Math.random() - 0.5) * 1.0,
+          speedY: (Math.random() - 0.5) * 1.0 - 0.3,
+          life: 1,
+          decay: 0.03 + Math.random() * 0.02,
+          color: Math.random() > 0.4 ? "#ffd978" : "#fff6d4"
+        });
+      }
+      if (cursorSparks.length > 55) cursorSparks.shift();
+    }, { passive: true });
+  }
+
+  // Mobile Touch Sparkles Burst (Brings touchscreens to life!)
+  window.addEventListener("touchstart", (e) => {
+    if (e.touches && e.touches.length > 0) {
+      const t = e.touches[0];
+      spawnTouchSparkles(t.clientX, t.clientY, 5);
     }
-    if (cursorSparks.length > 55) cursorSparks.shift();
+  }, { passive: true });
+
+  window.addEventListener("click", (e) => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      spawnTouchSparkles(e.clientX, e.clientY, 6);
+    }
   }, { passive: true });
 
   const renderSparks = () => {
@@ -1082,7 +1149,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupCopyAddress();
   setupTiltCards();
   setupScrollReveal();
+  setupScrollProgressBar();
   setupDiyaInteractions();
   initPetalCanvas();
-  initCursorTrail();
+  initSparkleCanvas();
 });
