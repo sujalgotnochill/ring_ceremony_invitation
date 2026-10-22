@@ -22,7 +22,7 @@ const CONFIG = {
   shubhMuhurat: "12:15 PM (शुभ मुहूर्त)",
   blessing: "॥ श्री गणेशाय नमः ॥",
   venueName: "Hotel Raj Palace",
-  venueAddress: " Krishi Upaj Mandi Road, Paharua, Katni, Madhya Pradesh 483501 (near Sai Mandir)",
+  venueAddress: "Krishi Upaj Mandi Road, Paharua, Katni, Madhya Pradesh 483501 (near Sai Mandir)",
   mapSearch: "Hotel Raj Palace, Katni",
   familyLine: "Vishwakarma Family",
   rsvpInfo: "R.S.V.P: +91 6265386842 / +91 9425465045",
@@ -250,15 +250,19 @@ function setupCalendarLinks() {
 
   const formatGCalDate = (d) => d.toISOString().replace(/-|:|\.\d\d\d/g, "");
 
+  const venueTitle = CONFIG.venueName ? CONFIG.venueName.trim() : "Hotel Raj Palace";
+  const cleanAddress = (CONFIG.venueAddress || "").trim().replace(/\n/g, ", ");
+  const fullLocation = cleanAddress ? `${venueTitle}, ${cleanAddress}` : venueTitle;
+
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
     `Ring Ceremony of ${CONFIG.bride} & ${CONFIG.groom}`
   )}&dates=${formatGCalDate(startDate)}/${formatGCalDate(endDate)}&details=${encodeURIComponent(
-    `We cordially invite you to celebrate the Ring Ceremony & Engagement of ${CONFIG.bride} and ${CONFIG.groom}. Shubh Muhurat: ${CONFIG.shubhMuhurat}. With love, ${CONFIG.familyLine}.`
-  )}&location=${encodeURIComponent(CONFIG.venueAddress)}`;
+    `We cordially invite you to celebrate the Ring Ceremony & Engagement of ${CONFIG.bride} and ${CONFIG.groom}.\n\nVenue: ${venueTitle}\nAddress: ${cleanAddress}\nShubh Muhurat: ${CONFIG.shubhMuhurat}\n\nWith love, ${CONFIG.familyLine}.`
+  )}&location=${encodeURIComponent(fullLocation)}`;
 
   calBtn.href = gCalUrl;
 
-  // ICS File download handler
+  // ICS File download handler (Apple Calendar, Outlook, iOS)
   const icsBtn = byId("downloadIcsBtn");
   if (icsBtn) {
     icsBtn.addEventListener("click", () => {
@@ -266,13 +270,18 @@ function setupCalendarLinks() {
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
         "PRODID:-//Royal Wedding//Ring Ceremony Invitation//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        `X-WR-CALNAME:Ring Ceremony - ${CONFIG.bride} & ${CONFIG.groom}`,
         "BEGIN:VEVENT",
-        `SUMMARY:Ring Ceremony: ${CONFIG.bride} & ${CONFIG.groom}`,
-        `DESCRIPTION:Sacred Ring Ceremony & Engagement. Shubh Muhurat: ${CONFIG.shubhMuhurat}. With blessings from ${CONFIG.familyLine}.`,
-        `LOCATION:${CONFIG.venueAddress.replace(/\n/g, ", ")}`,
+        `SUMMARY:Ring Ceremony: ${CONFIG.bride} & ${CONFIG.groom} (Hotel Raj Palace)`,
+        `DESCRIPTION:Sacred Ring Ceremony & Engagement of ${CONFIG.bride} & ${CONFIG.groom}.\\n\\nVenue: ${venueTitle}\\nAddress: ${cleanAddress}.\\nShubh Muhurat: ${CONFIG.shubhMuhurat}.\\n\\nWith blessings from ${CONFIG.familyLine}.`,
+        `LOCATION:${fullLocation}`,
+        `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="${venueTitle}":geo:23.8343,80.3990`,
         `DTSTART:${formatGCalDate(startDate)}`,
         `DTEND:${formatGCalDate(endDate)}`,
         "STATUS:CONFIRMED",
+        "SEQUENCE:0",
         "END:VEVENT",
         "END:VCALENDAR"
       ].join("\r\n");
@@ -284,7 +293,7 @@ function setupCalendarLinks() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      showToast("📅 Calendar invitation saved!");
+      showToast("📅 Calendar invitation saved for Hotel Raj Palace!");
     });
   }
 }
