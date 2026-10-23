@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Rozha+One&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700;800;900&family=Rozha+One&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
@@ -104,26 +104,30 @@
               stroke-width="3" />
             <path d="M0,0 Q150,75 300,0 Q450,75 600,0 Q750,75 900,0 Q1050,75 1200,0" fill="none" stroke="#d4af37"
               stroke-dasharray="8 8" stroke-width="2" />
-            
+
             <!-- Hanging bells with pendulum harmonic sway -->
             <g class="swinging-bell bell-1">
               <line x1="150" y1="0" x2="150" y2="44" stroke="#d4af37" stroke-width="2" />
-              <path d="M142,44 C142,34 158,34 158,44 L161,54 L139,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <path d="M142,44 C142,34 158,34 158,44 L161,54 L139,54 Z" fill="url(#bellGoldGrad)"
+                filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
               <circle cx="150" cy="57" r="3" fill="#ffeaa7" />
             </g>
             <g class="swinging-bell bell-2">
               <line x1="450" y1="0" x2="450" y2="44" stroke="#d4af37" stroke-width="2" />
-              <path d="M442,44 C442,34 458,34 458,44 L461,54 L439,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <path d="M442,44 C442,34 458,34 458,44 L461,54 L439,54 Z" fill="url(#bellGoldGrad)"
+                filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
               <circle cx="450" cy="57" r="3" fill="#ffeaa7" />
             </g>
             <g class="swinging-bell bell-3">
               <line x1="750" y1="0" x2="750" y2="44" stroke="#d4af37" stroke-width="2" />
-              <path d="M742,44 C742,34 758,34 758,44 L761,54 L739,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <path d="M742,44 C742,34 758,34 758,44 L761,54 L739,54 Z" fill="url(#bellGoldGrad)"
+                filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
               <circle cx="750" cy="57" r="3" fill="#ffeaa7" />
             </g>
             <g class="swinging-bell bell-4">
               <line x1="1050" y1="0" x2="1050" y2="44" stroke="#d4af37" stroke-width="2" />
-              <path d="M1042,44 C1042,34 1058,34 1058,44 L1061,54 L1039,54 Z" fill="url(#bellGoldGrad)" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
+              <path d="M1042,44 C1042,34 1058,34 1058,44 L1061,54 L1039,54 Z" fill="url(#bellGoldGrad)"
+                filter="drop-shadow(0 3px 5px rgba(0,0,0,0.6))" />
               <circle cx="1050" cy="57" r="3" fill="#ffeaa7" />
             </g>
           </svg>
@@ -159,9 +163,9 @@
           </div>
 
           <!-- Golden Horizontal Ribbon that unties -->
-          <div class="envelope-ribbon ribbon-horizontal" id="envelopeRibbon" aria-hidden="true">
+          <!-- <div class="envelope-ribbon ribbon-horizontal" id="envelopeRibbon" aria-hidden="true">
             <span class="ribbon-line"></span>
-          </div>
+          </div> -->
 
           <div class="envelope-card" id="envelopeWrapper">
             <!-- Envelope Gold Filigree Borders -->
@@ -227,7 +231,7 @@
                   <span class="seal-text hindi">शुभम्</span>
                 </div>
               </button>
-              <p class="seal-instruction">TOUCH TO OPEN THE ROYAL INVITATION</p>
+              <!-- <p class="seal-instruction">TOUCH TO OPEN THE ROYAL INVITATION</p> -->
             </div>
 
             <!-- Couple Names on Cover with Embossed Luxury Gold -->
@@ -252,10 +256,10 @@
             </div>
 
             <div class="action-btn-wrapper">
-              <button class="royal-btn-primary" id="openInvite" type="button">
+              <button class="royal-btn-primary" id="openInvite" type="button" aria-label="Open Royal Invitation">
                 <span class="btn-sheen" aria-hidden="true"></span>
                 <span class="btn-hindi hindi">शुभ आमंत्रण खोलें</span>
-                <span class="btn-sub">OPEN ROYAL INVITATION</span>
+                <span class="btn-sub">✦ TAP TO OPEN ✦</span>
                 <span class="btn-arrow" aria-hidden="true">↓</span>
               </button>
               <p class="cover-scroll-hint hindi" aria-hidden="true">आमंत्रण खोलें एवं संपूर्ण मांगलिक कार्यक्रम देखें ↓
